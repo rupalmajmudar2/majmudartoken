@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
+//Deployed via Remix
 // ----------------------------------------------------------------------------
 // ERC Token Standard #20 Interface
 //
@@ -32,8 +32,7 @@ contract SafeMath {
     }
 }
 
-
-contract RMToken2021 is ERC20Interface, SafeMath {
+contract RMAbstractContract is ERC20Interface, SafeMath {
     string public name;
     string public symbol;
     uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
@@ -49,13 +48,7 @@ contract RMToken2021 is ERC20Interface, SafeMath {
      * Initializes contract with initial supply tokens to the creator of the contract
      */
     constructor() {
-        name = "RMToken2021";
-        symbol = "RMT";
-        decimals = 18;
-        _totalSupply = 1000000000;
-
-        balances[msg.sender] = _totalSupply;
-        emit Transfer(address(0), msg.sender, _totalSupply);
+        //all in the subclass for now
     }
 
     function totalSupply() external override view returns (uint) {
@@ -89,5 +82,17 @@ contract RMToken2021 is ERC20Interface, SafeMath {
         balances[to] = safeAdd(balances[to], tokens);
         emit Transfer(from, to, tokens);
         return true;
+    }
+}
+
+contract RMToken22021 is RMAbstractContract {
+    constructor() {
+        name = "RMTokenM2";
+        symbol = "RMTOK2";
+        decimals = 18;
+        _totalSupply = 5000000 * (10 ** uint256(decimals)); //1M tokens issued.
+
+        balances[msg.sender] = _totalSupply;
+        emit Transfer(address(0), msg.sender, _totalSupply);
     }
 }
