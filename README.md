@@ -8,3 +8,4 @@ Thats it!
 (4) Copy the contract address into Metamask for importing the token
     Check that it gets the initial-balance amount already!
 (5) Execute the txns on the deployed contract
+    e.g. (on left of solidity screen) Deployed Contracts -> transfer... : should open metamask and should work!
